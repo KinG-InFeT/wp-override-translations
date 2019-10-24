@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress-plugins.luongovincenzo.it/#wp-override-translations
  * Description: Thanks to this plugin you can translate all the strings of your portal through the admin panel.
  * Donate URI: https://wordpress-plugins.luongovincenzo.it/#donate
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Vincenzo Luongo
  * Author URI: https://wordpress-plugins.luongovincenzo.it/
  * License: GPLv2 or later
@@ -28,7 +28,16 @@ class WP_Override_Translations_Init {
         if (is_admin()) {
             require_once('php/admin.php');
             $WP_Override_Translations_Admin = new WP_Override_Translations_Admin();
+
+            add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'add_plugin_actions']);
         }
+    }
+
+    public function add_plugin_actions($links) {
+        $links[] = '<a href="' . esc_url(get_admin_url(null, 'options-general.php?page=wp-override-translations')) . '">Manage Translations</a>';
+        $links[] = '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">Donate</a>';
+
+        return $links;
     }
 
 }

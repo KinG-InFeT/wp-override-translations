@@ -14,54 +14,41 @@ class WP_Override_Translations_Admin {
 
         add_action('admin_init', [$this, 'settings_init']);
         add_action('admin_menu', [$this, 'add_menu_admin']);
-
-        add_filter('plugin_action_links_' . WP_OVERRIDE_TRANSLATIONS_PLUGIN_DIR . '/index.php', [$this, 'add_plugin_actions']);
-    }
-
-    public function add_plugin_actions($links) {
-
-        $addLinks = [
-            '<a href="' . admin_url('options-general.php?page=wp-override-translations') . '">' . _e('Settings') . '</a>',
-            '<a href="https://wordpress-plugins.luongovincenzo.it/#donate" target="_blank">' . _e('Donate') . '</a>',
-        ];
-
-        return array_merge($links, $addLinks);
-    }
-
-    public function settings_init() {
-        if (get_option(WP_OVERRIDE_TRANSLATIONS) === false) {
-            //update_option(WP_OVERRIDE_TRANSLATIONS, []);
-            //update_option(WP_OVERRIDE_TRANSLATIONS_LINES, []);
-        }
-        register_setting(WP_OVERRIDE_TRANSLATIONS, WP_OVERRIDE_TRANSLATIONS_LINES, [$this, 'validate_constants']);
-    }
-
-    public function validate_constants($strings) {
-
-        $updateTranslations = [];
-
-        if (!empty($strings['original'])) {
-
-            foreach ($strings['original'] as $key => $value) {
-                
-                if (empty($value))
-                    continue;
-
-                $updateTranslations[] = [
-                    'original' => $value,
-                    'overwrite' => $strings['overwrite'][$key],
-                    'descriptions' => $strings['descriptions'][$key],
-                ];
-            }
-        }
-
-        update_option(WP_OVERRIDE_TRANSLATIONS, $updateTranslations);
-
-        return $updateTranslations;
     }
 
     public function add_menu_admin() {
         add_options_page('WP Override Translations', 'WP Override Translations', 'administrator', 'wp-override-translations', [$this, 'setting_page']);
+    }
+
+    public function settings_init() {
+
+        register_setting(WP_OVERRIDE_TRANSLATIONS, WP_OVERRIDE_TRANSLATIONS_LINES, [$this, 'validate_translations_and_save']);
+
+        if (get_option(WP_OVERRIDE_TRANSLATIONS_LINES) === false) {
+
+            update_option(WP_OVERRIDE_TRANSLATIONS_LINES, []);
+        }
+    }
+
+    public function validate_translations_and_save($strings) {
+
+        $updateTranslations = [];
+
+        if (!empty($strings['original']) && count($strings['original']) > 0) {
+
+            foreach ($strings['original'] as $key => $value) {
+
+                if (!empty($value)) {
+                    $updateTranslations[] = [
+                        'original' => $value,
+                        'overwrite' => $strings['overwrite'][$key],
+                        'descriptions' => $strings['descriptions'][$key],
+                    ];
+                }
+            }
+        }
+
+        return $updateTranslations;
     }
 
     public function setting_page() {
@@ -75,13 +62,14 @@ class WP_Override_Translations_Admin {
         <div class="wrap">
             <h2><?php _e("WP Override Translations Settings"); ?></h2>
             <div class="postbox-container" style="width:100%;">
-                <div class="metabox-holder">	
+                <div class="metabox-holder">    
                     <div class="meta-box-sortables">
 
                         <div class="postbox" width="90%">
                             <h3 class="hndle"><span><?php _e('List Translation Overrides'); ?></span></h3>
                             <div class="inside">
-                                <form method="post" action="options.php">
+
+                                <form method="POST" action="options.php">
 
                                     <?php do_settings_sections(WP_OVERRIDE_TRANSLATIONS); ?>
                                     <?php settings_fields(WP_OVERRIDE_TRANSLATIONS); ?>
