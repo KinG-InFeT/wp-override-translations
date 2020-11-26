@@ -11,6 +11,7 @@ class WP_Override_Translations {
     }
 
     public function apply_translate_string($translatedString) {
+
         if (!is_array($this->overrides)) {
             return $translatedString;
         }
@@ -21,6 +22,7 @@ class WP_Override_Translations {
 
             $translatedString = str_ireplace($findOriginal, $replaceOverwrite, $translatedString);
         }
+        
         return $translatedString;
     }
 

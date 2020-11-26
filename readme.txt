@@ -1,10 +1,9 @@
 === WP Override String Translations ===
-Contributors: vluongo
-Donate link: https://wordpress-plugins.luongovincenzo.it/#donate
+Contributors: Vincenzo Luongo
 Tags: gettext, ngettext, string translations, override translation, woocommerce translate
 Requires at least: 4.9.0
-Tested up to: 5.3
-Requires PHP: 5.6
+Tested up to: 5.6
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +33,9 @@ It uses a gettext and ngettext WordPress filter
 
 
 == Changelog ==
+
+= 1.2.0 =
+* Bug Fix and added support for Wordpress 5.6
 
 = 1.1.0 =
 * Compatible with Wordpress 5.3
