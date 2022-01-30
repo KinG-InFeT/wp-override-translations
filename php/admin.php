@@ -82,7 +82,7 @@ class WP_Override_Translations_Admin {
 							<?php foreach ($translations as $key => $value) : ?>
 								<tr valign="top" id="row_id_<?php print $key; ?>_translate">
 									<td>
-										<input type="text" style="width:100%;" name="<?php print WP_OVERRIDE_TRANSLATIONS_LINES; ?>[original][]" value="<?php if (isset($value['original'])) echo esc_html($value['original']); ?>" />
+										<input type="text" style="width:100%;" name="<?php print WP_OVERRIDE_TRANSLATIONS_LINES; ?>[original][]" value="<?php if (isset($value['original'])) echo esc_html(htmlspecialchars($value['original'])); ?>" />
 									</td>
 									<td>
 										<input type="text" style="width:100%;" name="<?php print WP_OVERRIDE_TRANSLATIONS_LINES; ?>[overwrite][]" value="<?php if (isset($value['overwrite'])) echo esc_html($value['overwrite']); ?>" />
