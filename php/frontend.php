@@ -22,7 +22,7 @@ class WP_Override_Translations {
 
             $translatedString = str_ireplace($findOriginal, $replaceOverwrite, $translatedString);
         }
-        
+
         return $translatedString;
     }
 

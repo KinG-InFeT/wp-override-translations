@@ -4,13 +4,12 @@
  * Plugin Name: WP Override Translations
  * Plugin URI: https://wordpress-plugins.luongovincenzo.it/#wp-override-translations
  * Description: Thanks to this plugin you can translate all the strings of your portal through the admin panel.
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: Vincenzo Luongo
  * Author URI: https://www.luongovincenzo.it/
  * License: GPLv2 or later
  * Text Domain: wp-override-translations
  */
-
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -24,7 +23,7 @@ define('WP_OVERRIDE_TRANSLATIONS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 class WP_Override_Translations_Init {
 
     public function __construct() {
-        
+
         if (!is_admin()) {
             require_once('php/frontend.php');
             $WP_Override_Translations = new WP_Override_Translations();
