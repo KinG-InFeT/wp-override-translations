@@ -1,6 +1,7 @@
-=== WP Override String Translations ===
-Contributors: Vincenzo Luongo
-Tags: gettext, ngettext, string translations, override translation, woocommerce translate, frontend translations
+=== Override String Translations ===
+Contributors: vluongo
+Stable tag: 2.0.0
+Tags: gettext, ngettext, string translations, override translation, woocommerce translate
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.0
