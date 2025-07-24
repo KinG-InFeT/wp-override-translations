@@ -1,8 +1,8 @@
 === WP Override String Translations ===
 Contributors: Vincenzo Luongo
-Tags: gettext, ngettext, string translations, override translation, woocommerce translate
+Tags: gettext, ngettext, string translations, override translation, woocommerce translate, frontend translations
 Requires at least: 5.0
-Tested up to: 6.1
+Tested up to: 6.8
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,6 +16,8 @@ The plugin trades both the Woocommerce texts and the well written Wordpress core
 <br>
 The plugin also allows you to replace strings with text composed of HTML.<br />
 It will translate all _e('') or __('') string calls, so check the PHP sourcecode of the plugin or theme you need to translate.
+It will translate all dom strings by css classes.
+It will translate all strings from the `gettext` and `ngettext` filters.
 <br>
 It will NOT translate any dynamic strings like %s or %d, so "%s has been added to your cart." is not translatable.
 
@@ -33,6 +35,12 @@ It uses a gettext and ngettext WordPress filter
 
 
 == Changelog ==
+
+= 2.0.0 =
+* Improvements for Wordpress 6.8 support
+* Add javascript with selector translate
+* Code improvements
+* Code Fixes
 
 = 1.5.0 =
 * Support for Wordpress 6.x added
