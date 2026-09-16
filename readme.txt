@@ -8,21 +8,28 @@ Stable tag: 4.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Change any text of WordPress, WooCommerce, plugins and themes from the admin panel, without touching code or translation files.
+Replace any text on your site, like button labels or WooCommerce messages, with your own words. No code, no translation files.
 
 == Description ==
 
-Don't like a button label, a WooCommerce message or a theme string? Type the text as it appears on your site, type what you want instead, save. Done.
+Change the words your site shows, without editing code or translation files.
+
+For example, turn "Add to cart" into "Buy now", "Related products" into "You may also like" or "Proceed to checkout" into "Complete your order".
+
+= How it works =
+
+1. Open Settings > Override Translations.
+2. Type the text as it appears on your site, then the text you want instead.
+3. Save: the new text shows up right away.
 
 = Features =
 
-* Works with WordPress core, WooCommerce, plugins and themes.
-* Covers every translatable string: `__()`, `_e()`, `_x()`, `_n()`, `_nx()` and the escaping variants.
-* HTML allowed in the replacement (bold, links, line breaks).
-* JS mode: replaces text rendered in the browser or loaded later, inside the elements you pick with a CSS selector.
-* Case-insensitive matching; longer texts win over shorter ones they contain.
-* Lightweight: no jQuery, and the JavaScript is only loaded when JS mode is in use.
-* Translation ready, available in English and Italian.
+* Works with the texts of WordPress, your theme and your plugins, WooCommerce included: buttons, labels, notices, form fields, cart and checkout messages.
+* Add simple HTML to the new text, such as bold or a link.
+* Upper and lower case don't matter: "add to cart" also matches "Add to cart".
+* JS mode, for texts a normal override can't reach, like text typed in a page builder or loaded after the page opens: point to the element with a CSS selector and the plugin replaces the text inside it, placeholders and image alt text included.
+* The admin area keeps the original texts.
+* Available in English and Italian.
 
 == Installation ==
 
